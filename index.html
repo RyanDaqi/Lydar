@@ -1240,13 +1240,13 @@ footer{background:var(--gray);border-top:1px solid var(--border);padding:56px 40
   // iframe YouTube — fallback masqué
   // If src not set / empty, show fallback immediately
   
-})();
+}var src=v.src;if(src.includes('mute=1')){v.src=src.replace('mute=1','mute=0');}else{v.src=src.replace('mute=0','mute=1');})();
 function toggleVideoMute(){
   var v=document.getElementById('hero-video');
   var btn=document.getElementById('video-mute-btn');
   if(!v)return;
-  v.muted=!v.muted;
-  btn.textContent=v.muted?'🔇 Son':'🔊 Muet';
+  var src=v.src;if(src.includes('mute=1')){v.src=src.replace('mute=1','mute=0');}else{v.src=src.replace('mute=0','mute=1');}
+  btn.textContent=v.src.includes('mute=1')?'🔇 Son':'🔊 Muet';
 }
 
 /* ─── PROMO POPUP ─── */
