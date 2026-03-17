@@ -1227,7 +1227,7 @@ footer{background:var(--gray);border-top:1px solid var(--border);padding:56px 40
 #promo-overlay.open{opacity:1;pointer-events:all}
 #promo-overlay.open #promo-modal{transform:none}
 /* ── VIDEO fallback: hide when video loads */
-video:not([error]) ~ #video-fallback{display:none}
+#video-fallback{display:none!important}
 </style>
 
 <script>
@@ -1236,10 +1236,10 @@ video:not([error]) ~ #video-fallback{display:none}
   var v=document.getElementById('hero-video');
   var fb=document.getElementById('video-fallback');
   if(!v)return;
-  v.addEventListener('loadeddata',function(){if(fb)fb.style.display='none';});
-  v.addEventListener('error',function(){if(fb)fb.style.display='flex';});
+  if(fb)fb.style.display='none';
+  // iframe YouTube — fallback masqué
   // If src not set / empty, show fallback immediately
-  if(!v.currentSrc){if(fb)fb.style.display='flex';}
+  
 })();
 function toggleVideoMute(){
   var v=document.getElementById('hero-video');
